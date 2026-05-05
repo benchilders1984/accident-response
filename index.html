@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Accident Response</title>
+  <style>
+    :root {
+      --red: #b00020; --yellow: #ffd400; --black: #111111; --gray: #f2f2f2;
+      --white: #ffffff; --green: #137333; --blue: #0b57d0;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Arial, Helvetica, sans-serif; color: var(--black); background: var(--gray); font-size: 22px; line-height: 1.35; }
+    header { background: var(--red); color: var(--white); padding: 28px 22px; text-align: center; border-bottom: 10px solid var(--yellow); }
+    header h1 { margin: 0; font-size: clamp(42px, 8vw, 76px); letter-spacing: 1px; text-transform: uppercase; }
+    .subtitle-row { margin: 10px auto 0; display: inline-flex; align-items: center; justify-content: center; gap: 18px; flex-wrap: wrap; }
+    header p { margin: 0; font-size: clamp(22px, 4vw, 36px); font-weight: 700; }
+    .language-toggle {
+      height: clamp(22px, 4vw, 36px);
+      min-width: clamp(82px, 11vw, 118px);
+      padding: 0 10px;
+      border: 3px solid var(--white);
+      border-radius: 8px;
+      background: var(--yellow);
+      color: var(--black);
+      font-size: clamp(14px, 2.2vw, 20px);
+      font-weight: 900;
+      line-height: 1;
+      cursor: pointer;
+      text-transform: uppercase;
+      box-shadow: 0 3px 0 rgba(0,0,0,.28);
+    }
+    main { width: min(1100px, 100%); margin: 0 auto; padding: 18px; }
+    .card { background: var(--white); border-radius: 20px; box-shadow: 0 4px 18px rgba(0,0,0,.12); padding: 22px; margin: 18px 0; border: 3px solid transparent; }
+    .emergency { border-color: var(--red); }
+    .nonemergency { border-color: var(--blue); }
+    h2 { font-size: clamp(34px, 6vw, 52px); margin: 0 0 14px; text-transform: uppercase; }
+    .big-button { display: block; width: 100%; text-align: center; text-decoration: none; color: var(--white); font-size: clamp(34px, 7vw, 64px); font-weight: 900; padding: 28px 18px; border-radius: 18px; margin: 16px 0; letter-spacing: 1px; box-shadow: 0 6px 0 rgba(0,0,0,.28); }
+    .call911 { background: var(--red); }
+    .maps { background: var(--green); }
+    .call { background: var(--blue); font-size: clamp(26px, 5vw, 42px); }
+    .steps { counter-reset: step; list-style: none; padding: 0; margin: 12px 0 0; }
+    .steps.continue { counter-reset: step 4; }
+    .steps li { counter-increment: step; display: flex; gap: 14px; align-items: flex-start; padding: 14px 0; border-top: 2px solid #ddd; font-size: clamp(24px, 4vw, 36px); font-weight: 700; }
+    .steps li::before { content: counter(step); flex: 0 0 auto; width: 48px; height: 48px; border-radius: 50%; background: var(--black); color: var(--white); display: grid; place-items: center; font-weight: 900; }
+    .contacts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
+    .contact-card { border: 2px solid #d0d0d0; border-radius: 16px; padding: 16px; background: #fafafa; }
+    .contact-card strong { display: block; font-size: 28px; }
+    .contact-card span { display: block; font-size: 20px; margin: 3px 0 12px; }
+    .note { background: #fff8cc; border-left: 10px solid var(--yellow); padding: 16px; border-radius: 12px; font-size: clamp(22px, 3.5vw, 30px); font-weight: 700; }
+    footer { text-align: center; font-size: 18px; color: #555; padding: 24px 10px 38px; }
+    @media print { body { background: white; } .big-button { color: white !important; box-shadow: none; } .card { box-shadow: none; break-inside: avoid; } .language-toggle { display: none; } }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 data-en="Accident Response" data-ru="Реагирование на несчастный случай" data-es="Respuesta a Accidentes">Accident Response</h1>
+    <div class="subtitle-row">
+      <p data-en="Job Site Emergency Instructions" data-ru="Инструкции при чрезвычайной ситуации на объекте" data-es="Instrucciones de Emergencia en el Sitio de Trabajo">Job Site Emergency Instructions</p></div>
+    <div class="subtitle-row" style="margin-top:12px;">
+      <button class="language-toggle" type="button" data-language-button="es">Español</button>
+      <button class="language-toggle" type="button" data-language-button="ru">Русский</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="card emergency">
+      <h2 data-en="Life-Threatening / Catastrophic Accident" data-ru="Опасный для жизни / катастрофический несчастный случай" data-es="Accidente Grave / Potencialmente Mortal">Life-Threatening / Catastrophic Accident</h2>
+      <a class="big-button call911" href="tel:911" data-en="CALL 911 NOW" data-ru="ПОЗВОНИТЕ 911 СЕЙЧАС" data-es="LLAME AL 911 AHORA">CALL 911 NOW</a>
+      <ol class="steps">
+        <li data-en="Stay with the injured person." data-ru="Оставайтесь с пострадавшим." data-es="Permanezca con la persona lesionada.">Stay with the injured person.</li>
+        <li data-en="Do not move them unless there is immediate danger." data-ru="Не перемещайте пострадавшего, если нет непосредственной опасности." data-es="No la mueva a menos que haya peligro inmediato.">Do not move them unless there is immediate danger.</li>
+        <li data-en="Send someone to direct emergency responders to the exact location." data-ru="Отправьте кого-нибудь встретить экстренные службы и направить их к точному месту." data-es="Envíe a alguien para guiar a los servicios de emergencia a la ubicación exacta.">Send someone to direct emergency responders to the exact location.</li>
+        <li data-en="Call your Project Manager." data-ru="Позвоните своему руководителю проекта." data-es="Llame a su Gerente de Proyecto.">Call your Project Manager.</li>
+        <li data-en="Contact the Safety Team." data-ru="Свяжитесь с командой по безопасности." data-es="Comuníquese con el Equipo de Seguridad.">Contact the Safety Team.</li>
+        <li data-en="Contact site supervision." data-ru="Свяжитесь с руководством объекта." data-es="Comuníquese con la supervisión del sitio.">Contact site supervision.</li>
+      </ol>
+    </section>
+
+    <section class="card nonemergency">
+      <h2 data-en="Non-Life-Threatening Injury" data-ru="Травма без угрозы жизни" data-es="Lesión No Potencialmente Mortal">Non-Life-Threatening Injury</h2>
+      <ol class="steps">
+        <li data-en="Provide onsite care / first aid." data-ru="Окажите помощь на месте / первую помощь." data-es="Proporcione atención en el sitio / primeros auxilios.">Provide onsite care / first aid.</li>
+        <li data-en="Assess whether medical treatment is needed." data-ru="Оцените, требуется ли медицинская помощь." data-es="Evalúe si se necesita tratamiento médico.">Assess whether medical treatment is needed.</li>
+        <li data-en="If medical care is needed, the foreman drives the injured individual." data-ru="Если нужна медицинская помощь, прораб отвозит пострадавшего." data-es="Si se necesita atención médica, el capataz lleva a la persona lesionada.">If medical care is needed, the foreman drives the injured individual.</li>
+        <li data-en="Preferred clinic: Strada Occupational Health, 8630 F Street." data-ru="Предпочтительная клиника: Strada Occupational Health, 8630 F Street." data-es="Clínica preferida: Strada Occupational Health, 8630 F Street.">Preferred clinic: Strada Occupational Health, 8630 F Street.</li>
+      </ol>
+      <a class="big-button maps" href="https://www.google.com/maps/search/Strada+Occupational+Health+8630+F+Street" target="_blank" rel="noopener" data-en="FIND STRADA OCCUPATIONAL HEALTH" data-ru="НАЙТИ STRADA OCCUPATIONAL HEALTH" data-es="BUSCAR STRADA OCCUPATIONAL HEALTH">FIND STRADA OCCUPATIONAL HEALTH</a>
+      <ol class="steps continue">
+        <li data-en="Call your Project Manager." data-ru="Позвоните своему руководителю проекта." data-es="Llame a su Gerente de Proyecto.">Call your Project Manager.</li>
+        <li data-en="Complete Accident Investigation and Eyewitness forms." data-ru="Заполните формы расследования несчастного случая и показаний свидетелей." data-es="Complete los formularios de Investigación de Accidente y Declaraciones de Testigos.">Complete Accident Investigation and Eyewitness forms.</li>
+      </ol>
+      <a class="big-button maps" href="https://www.google.com/maps/search/hospital+near+me" target="_blank" rel="noopener" data-en="FIND NEAREST HOSPITAL" data-ru="НАЙТИ БЛИЖАЙШУЮ БОЛЬНИЦУ" data-es="BUSCAR HOSPITAL MÁS CERCANO">FIND NEAREST HOSPITAL</a>
+      <div class="note" data-en="Use the hospital button when the preferred clinic is not appropriate, unavailable, or emergency care is needed." data-ru="Используйте кнопку больницы, если предпочтительная клиника не подходит, недоступна или требуется экстренная помощь." data-es="Use el botón de hospital cuando la clínica preferida no sea apropiada, no esté disponible o se necesite atención de emergencia.">Use the hospital button when the preferred clinic is not appropriate, unavailable, or emergency care is needed.</div>
+    </section>
+
+    <section class="card">
+      <h2 data-en="Safety Team" data-ru="Команда по безопасности" data-es="Equipo de Seguridad">Safety Team</h2>
+      <div class="contacts-grid">
+        <div class="contact-card">
+          <strong>Jesse Phillips</strong>
+          <span data-en="Head Safety Consultant" data-ru="Главный консультант по безопасности" data-es="Consultor Principal de Seguridad">Head Safety Consultant</span>
+          <a class="big-button call" href="tel:+14022131378" data-en="Call Jesse<br>402-213-1378" data-ru="Позвонить Jesse<br>402-213-1378" data-es="Llamar a Jesse<br>402-213-1378">Call Jesse<br>402-213-1378</a>
+        </div>
+        <div class="contact-card">
+          <strong>Luke Lish</strong>
+          <span data-en="Safety Consultant" data-ru="Консультант по безопасности" data-es="Consultor de Seguridad">Safety Consultant</span>
+          <a class="big-button call" href="tel:+14022444319" data-en="Call Luke<br>402-244-4319" data-ru="Позвонить Luke<br>402-244-4319" data-es="Llamar a Luke<br>402-244-4319">Call Luke<br>402-244-4319</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2 data-en="Project Management" data-ru="Руководство проекта" data-es="Gerencia de Proyecto">Project Management</h2>
+      <div class="contacts-grid">
+        <div class="contact-card">
+          <strong>Nick Porto</strong>
+          <span>HVAC / Fitting PM</span>
+          <a class="big-button call" href="tel:+14026602517" data-en="Call Nick<br>402-660-2517" data-ru="Позвонить Nick<br>402-660-2517" data-es="Llamar a Nick<br>402-660-2517">Call Nick<br>402-660-2517</a>
+        </div>
+        <div class="contact-card">
+          <strong>Tyler Murphy</strong>
+          <span data-en="Plumbing PM" data-ru="Руководитель проекта по сантехнике" data-es="Gerente de Proyecto de Plomería">Plumbing PM</span>
+          <a class="big-button call" href="tel:+18054333265" data-en="Call Tyler<br>805-433-3265" data-ru="Позвонить Tyler<br>805-433-3265" data-es="Llamar a Tyler<br>805-433-3265">Call Tyler<br>805-433-3265</a>
+        </div>
+        <div class="contact-card">
+          <strong>Matt Douglas</strong>
+          <span>Titan PM</span>
+          <a class="big-button call" href="tel:+14024696816" data-en="Call Matt<br>402-469-6816" data-ru="Позвонить Matt<br>402-469-6816" data-es="Llamar a Matt<br>402-469-6816">Call Matt<br>402-469-6816</a>
+        </div>
+        <div class="contact-card">
+          <strong>Rikki Wagemen</strong>
+          <span data-en="Senior Project Manager" data-ru="Старший руководитель проекта" data-es="Gerente Senior de Proyecto">Senior Project Manager</span>
+          <a class="big-button call" href="tel:+14029906914" data-en="Call Rikki<br>402-990-6914" data-ru="Позвонить Rikki<br>402-990-6914" data-es="Llamar a Rikki<br>402-990-6914">Call Rikki<br>402-990-6914</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer data-en="Christopherson Mechanical · Updated May 5, 2026" data-ru="Christopherson Mechanical · Обновлено 5 мая 2026 г." data-es="Christopherson Mechanical · Actualizado el 5 de mayo de 2026">Christopherson Mechanical · Updated May 5, 2026</footer>
+
+  <script>
+    (function () {
+      var currentLanguage = "en";
+      var languageButtons = document.querySelectorAll("[data-language-button]");
+      var translatable = document.querySelectorAll("[data-en][data-es][data-ru]");
+
+      function setLanguage(language) {
+        currentLanguage = language;
+        document.documentElement.lang = language;
+        translatable.forEach(function (element) {
+          element.innerHTML = element.getAttribute("data-" + language);
+        });
+
+        languageButtons.forEach(function (button) {
+          var buttonLanguage = button.getAttribute("data-language-button");
+          if (currentLanguage === buttonLanguage) {
+            button.textContent = "English";
+            button.setAttribute("aria-label", "Switch language to English");
+          } else if (buttonLanguage === "es") {
+            button.textContent = "Español";
+            button.setAttribute("aria-label", "Switch language to Spanish");
+          } else if (buttonLanguage === "ru") {
+            button.textContent = "Русский";
+            button.setAttribute("aria-label", "Switch language to Russian");
+          }
+        });
+      }
+
+      languageButtons.forEach(function (button) {
+        button.addEventListener("click", function () {
+          var targetLanguage = button.getAttribute("data-language-button");
+          setLanguage(currentLanguage === targetLanguage ? "en" : targetLanguage);
+        });
+      });
+
+      setLanguage("en");
+    })();
+  </script>
+</body>
+</html>
